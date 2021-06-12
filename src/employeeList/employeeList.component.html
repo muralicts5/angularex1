@@ -1,0 +1,21 @@
+
+<table>
+    <thead>
+            <td>id</td>
+            <td>first name</td>
+            <td>Details</td>
+    </thead>
+    <tr *ngFor="let employee of employees">
+    <td>{{employee.id}}</td>
+    <td>{{employee.first_name}}</td>
+    <td><button (click)="test(employee.id)">click here for details</button>
+    </td>
+     </tr>
+</table>
+
+<ul *ngIf="selectedEmployee">
+<li><img [src]="selectedEmployee.avatar"/></li>
+<li>{{selectedEmployee.last_name}}</li>
+<li>{{selectedEmployee.email}}</li>
+</ul>
+
