@@ -7,4 +7,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angularEx1';
+  employee:any={};
+
+  notifyEmployee($event:any){
+    console.log('$event')
+
+    console.log($event)
+    this.employee=$event;
+  }
+
 }

@@ -1,4 +1,9 @@
 
+<div>
+<form>
+        <input type="text" name="name" [(ngModel)]="name"/>
+</form>
+Name:{{name}}
 <table>
     <thead>
             <td>id</td>
@@ -12,10 +17,6 @@
     </td>
      </tr>
 </table>
+        <employee-details [employee]="selectedEmployee"></employee-details>
 
-<ul *ngIf="selectedEmployee">
-<li><img [src]="selectedEmployee.avatar"/></li>
-<li>{{selectedEmployee.last_name}}</li>
-<li>{{selectedEmployee.email}}</li>
-</ul>
-
+</div>

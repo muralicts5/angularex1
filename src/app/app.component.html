@@ -1,1 +1,3 @@
-<employee-list></employee-list>
+
+<h2>name:{{employee.first_name}}</h2>
+<employee-list (employeeChange)="notifyEmployee($event)"></employee-list>

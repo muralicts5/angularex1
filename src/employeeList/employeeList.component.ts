@@ -1,10 +1,18 @@
-import {Component} from '@angular/core'
+import {Component, EventEmitter, Output, OnInit, OnDestroy, OnChanges, SimpleChanges} from '@angular/core'
 
 @Component({
     selector:'employee-list',
     templateUrl:"employeeList.component.html"
 })
-export class EmployeeList {
+
+// Life Cycle
+//init
+// onchanges
+// destroy
+// new EmployeeList()
+
+
+export class EmployeeList implements OnInit, OnDestroy, OnChanges{
   employees: any = [
     {
       id: 1,
@@ -49,10 +57,36 @@ export class EmployeeList {
       avatar: 'https://reqres.in/img/faces/6-image.jpg',
     },
   ];
+
   selectedEmployee:any;
+  name:string="ramesh";
+  @Output() employeeChange:EventEmitter<string>=new EventEmitter<string>();
+
+  constructor(){
+    console.log('inside the constructor');
+  }
+  
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log('inside the ngOnChanges');
+  }
+  
+  ngOnDestroy(): void {
+    console.log('inside the ngOnDestroy');
+  }
+
+  ngOnInit(): void {
+    console.log('inside the init')
+  }
+
   test(id:number):void{
-      const filteredEmployees=this.employees.filter((employee: { id: number; })=>employee.id==id)
-        this.selectedEmployee=filteredEmployees[0];
+      const filteredEmployees=
+      this.employees.filter((employee:any)=>employee.id==id)
+      this.selectedEmployee=filteredEmployees[0];
         console.log(this.selectedEmployee)
+        this.employeeChange.emit(this.selectedEmployee);
     }
+
+  test123(){
+
+  }  
 }
