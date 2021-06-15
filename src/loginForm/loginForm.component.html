@@ -1,0 +1,29 @@
+
+
+<form novalidate (ngSubmit)="save(loginForm)" #loginForm="ngForm">
+    <br>
+    <label>User Name</label>
+        <input type="text" name="userName"  
+            required minlength="3" 
+        [(ngModel)]="login.username"
+        #usernameVar="ngModel"
+        />
+           <span *ngIf="usernameVar.touched"> 
+            <span *ngIf="usernameVar.errors?.required">
+                Please enter your username.
+              </span>
+              <span *ngIf="usernameVar.errors?.minlength">
+                The first name must be longer than 3 characters.
+              </span>
+            </span>
+        <br>
+        <label>Password</label>
+            <input type="text" 
+            required minlength="3"
+            name="password" [(ngModel)]="login.password"/>
+    <input type="submit" [disabled]="!loginForm.valid"/>
+</form>
+<br>Dirty: {{ loginForm.dirty }}
+<br>Touched: {{ loginForm.touched }}
+<br>Valid: {{ loginForm.valid }}
+<br>Value: {{ loginForm.value | json }}
