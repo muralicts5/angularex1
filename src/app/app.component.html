@@ -1,4 +1,9 @@
-
-<login-form></login-form>
-<h2>name:{{employee.first_name}}</h2>
-<employee-list (employeeChange)="notifyEmployee($event)"></employee-list>
+<h2>Employee Management System</h2>
+<button mat-button [matMenuTriggerFor]="menu">Menu</button>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item>Employees</button>
+  <button mat-menu-item>Department</button>
+  <button mat-menu-item>Skill</button>
+</mat-menu>
+<router-outlet></router-outlet>
+<h5>copy right information</h5>

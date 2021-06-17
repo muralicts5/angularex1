@@ -1,22 +1,21 @@
+   <br>
+        <button  mat-button color="primary" (click)="addEmployee()">Add Employee</button> 
 
-<div>
-<form>
-        <input type="text" name="name" [(ngModel)]="name"/>
-</form>
-Name:{{name}}
-<table>
-    <thead>
-            <td>id</td>
-            <td>first name</td>
-            <td>Details</td>
-    </thead>
-    <tr *ngFor="let employee of employees">
-    <td>{{employee.id}}</td>
-    <td>{{employee.first_name}}</td>
-    <td><button (click)="test(employee.id)">click here for details</button>
-    </td>
-     </tr>
+        <table mat-table [dataSource]="employees"  class="mat-elevation-z8" >    
+        <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef> ID </th>
+                <td mat-cell *matCellDef="let employee">
+                        
+                        <a [routerLink]="['/employees',employee.id]">{{employee.id}}</a></td>
+              </ng-container>
+              <ng-container matColumnDef="first_name">
+                <th mat-header-cell *matHeaderCellDef> Name </th>
+                <td mat-cell *matCellDef="let employee"> {{employee.first_name}} </td>
+              </ng-container>
+              <ng-container matColumnDef="avatar">
+                <th mat-header-cell *matHeaderCellDef> Details </th>
+                <td mat-cell *matCellDef="let employee"> <button  mat-button color="primary" (click)="test(employee.id)">click here for details</button> </td>
+              </ng-container>
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
-        <employee-details [employee]="selectedEmployee"></employee-details>
-
-</div>

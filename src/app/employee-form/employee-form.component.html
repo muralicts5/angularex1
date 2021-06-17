@@ -1,0 +1,16 @@
+<form novalidate [formGroup]="employeeForm" (ngSubmit)="save()"  >
+    <br>
+    <label>First Name</label>
+        <input type="text" formControlName="firstName"/>
+     <br>   
+        <label>Last Name</label>
+        <input type="text" formControlName="lastName"/>
+    <br>   
+        <label>Age</label>
+        <input type="Number" formControlName="age"/>
+        <button type="submit" [disabled]="!employeeForm.valid">Submit</button>
+    </form>
+<br>Dirty: {{ employeeForm.dirty }}
+<br>Touched: {{ employeeForm.touched }}
+<br>Valid: {{ employeeForm.valid }}
+<br>Value: {{ employeeForm.value | json }}
