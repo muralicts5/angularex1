@@ -9,6 +9,8 @@ export class AppComponent {
   title = 'angularEx1';
   employee:any={};
 
+  
+
   notifyEmployee($event:any){
     console.log('$event')
 

@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Output, OnInit, OnDestroy, OnChanges, SimpleChanges} from '@angular/core'
 import { Router } from '@angular/router';
+import { Employee } from 'src/employee/Employee';
 import { EmployeeService } from 'src/employeeService/employee.service';
 
 
@@ -19,7 +20,7 @@ import { EmployeeService } from 'src/employeeService/employee.service';
 
 
 export class EmployeeList implements OnInit, OnDestroy, OnChanges{
-  employees: any = [];
+  employees: Employee[] = [];
 
 
   selectedEmployee:any;
@@ -47,6 +48,7 @@ export class EmployeeList implements OnInit, OnDestroy, OnChanges{
   }
 
   addEmployee(){
+    
     this.router.navigate(["employeeForm"]);
   }
 

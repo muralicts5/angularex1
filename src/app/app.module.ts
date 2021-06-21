@@ -13,6 +13,7 @@ import { MatMenuModule } from '@angular/material/menu'
 
 import { RouterModule } from '@angular/router';
 import { TestDemoComponent } from './test-demo/test-demo.component'  
+import { AuthGuardGuard } from './auth-guard.guard';
 
 
 @NgModule({
@@ -22,9 +23,9 @@ import { TestDemoComponent } from './test-demo/test-demo.component'
   imports: [
     BrowserModule,MatButtonModule, FormsModule, ReactiveFormsModule, BrowserAnimationsModule, MatTableModule,MatMenuModule,
     RouterModule.forRoot([
-      {path:"employees", component:EmployeeList},
-      {path:"employees/:id", component:EmployeeDetails},
-      {path:"employeeForm", component:EmployeeFormComponent},
+      {path:"employees", component:EmployeeList, canActivate:[AuthGuardGuard]},
+      {path:"employees/:id", component:EmployeeDetails, canActivate:[AuthGuardGuard]},
+      {path:"employeeForm", component:EmployeeFormComponent, canActivate:[AuthGuardGuard]},
       {path:"login", component:LoginForm},
       {path:"", component:LoginForm},
       {path:"**", component:LoginForm}
