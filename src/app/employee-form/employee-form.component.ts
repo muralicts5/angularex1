@@ -26,31 +26,16 @@ export class EmployeeFormComponent implements OnInit {
 
 save(){
   console.log('employeeForm')
-  const employeeList:Employee[]=this.employeeService.getEmployeeList();
-  let previousLength:number=employeeList.length;
-  --previousLength;
-  console.log(previousLength);
-  console.log(employeeList);
-  console.log(employeeList[previousLength]);
-  const lastEmployee:Employee=employeeList[previousLength];
-  console.log(lastEmployee);
-  let lastId:number=lastEmployee && lastEmployee.id?lastEmployee.id:0;
-  lastId=lastId+1;
-
-  this.employee={
-    id:lastId,
+   this.employee={
     first_name:this.employeeForm.value.firstName,
     last_name:this.employeeForm.value.lastName,
     email:this.employeeForm.value.email,
-    avatar:lastEmployee?lastEmployee.avatar:''
   }
-  this.employeeService.addEmployees(this.employee);
+  this.employeeService.addEmployees(this.employee).subscribe();
   this.router.navigate(["employees"]);
 }
 
   ngOnInit(): void {
   }
-
-
 
 }

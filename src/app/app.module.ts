@@ -10,6 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from '@angular/material/table'  
 import { MatButtonModule } from '@angular/material/button'  
 import { MatMenuModule } from '@angular/material/menu'  
+import { HttpClientModule } from  '@angular/common/http';
 
 import { RouterModule } from '@angular/router';
 import { TestDemoComponent } from './test-demo/test-demo.component'  
@@ -21,7 +22,7 @@ import { AuthGuardGuard } from './auth-guard.guard';
     AppComponent,EmployeeList,EmployeeDetails,LoginForm, EmployeeFormComponent, TestDemoComponent
   ],
   imports: [
-    BrowserModule,MatButtonModule, FormsModule, ReactiveFormsModule, BrowserAnimationsModule, MatTableModule,MatMenuModule,
+    BrowserModule,MatButtonModule, FormsModule, ReactiveFormsModule, BrowserAnimationsModule, MatTableModule,MatMenuModule, HttpClientModule,
     RouterModule.forRoot([
       {path:"employees", component:EmployeeList, canActivate:[AuthGuardGuard]},
       {path:"employees/:id", component:EmployeeDetails, canActivate:[AuthGuardGuard]},

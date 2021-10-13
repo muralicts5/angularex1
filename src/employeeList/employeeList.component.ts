@@ -43,7 +43,14 @@ export class EmployeeList implements OnInit, OnDestroy, OnChanges{
   }
 
   ngOnInit(): void {
-    this.employees=this.employeeService.getEmployeeList();
+    this.employeeService.getEmployeeList() 
+                    .subscribe((data:Employee[]) => 
+                    {
+                      console.log("data")
+                      console.log(data)
+                      this.employees = data
+                    }
+                    );
     console.log('inside the init')
   }
 

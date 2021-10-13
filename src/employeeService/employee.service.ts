@@ -1,8 +1,12 @@
 import { Injectable } from "@angular/core";
 import { Employee } from "../employee/Employee";
+import { Observable, throwError } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({providedIn:"root"})
 export class EmployeeService{
+
+  constructor(private http: HttpClient) { }
 
     employees:Employee[]= [
       {
@@ -52,9 +56,16 @@ export class EmployeeService{
     addEmployees(employee:Employee){
       console.log(employee)
       this.employees.push(employee);
+      return this.http.post<Employee>("http://localhost:8090/employees", employee);
     }
 
-    getEmployeeList():Employee[]{
-        return this.employees;       
+ 
+    getEmployeeList():Observable<Employee[]>{
+      console.log("inside the employee list"+localStorage.getItem("access_token"))
+      let header = new HttpHeaders({ "Authorization": "Bearer "+localStorage.getItem("access_token")});
+       const requestOptions = {  headers: header};   
+      return this.http.get<Employee[]>("http://localhost:8200/hi/employees",requestOptions);
     }
+    
+
 }
